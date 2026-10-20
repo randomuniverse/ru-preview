@@ -521,8 +521,8 @@
     <span class="who">FLUTD 재구성 · <b>Random Universe</b></span>
     <span class="spacer"></span>
     <div class="seg" role="tablist" aria-label="적용 범위">
-      <button role="tab" id="tabOrig" aria-selected="false" data-mode="orig">원본</button>
-      <button role="tab" id="tabGeo"  aria-selected="true" data-mode="geo">SEO+GEO 버전</button>
+      <button role="tab" id="tabOrig" aria-selected="false" data-mode="orig">힐스펫 원본</button>
+      <button role="tab" id="tabGeo"  aria-selected="true" data-mode="geo">SEO+GEO 강화 버전</button>
     </div>
     <button class="ghost" id="diffBtn" type="button" aria-pressed="false">변경사항 보기</button>
   </div>
@@ -1033,10 +1033,10 @@
   var body=document.body, note=document.getElementById('modeNote');
   var tabs=[document.getElementById('tabOrig'),document.getElementById('tabGeo')];
   var TEXT={
-    orig:'<b>원본</b> — 힐스펫 코리아에 현재 올라가 있는 같은 주제의 페이지입니다.',
+    orig:'<b>힐스펫 원본</b> — 힐스펫 코리아에 현재 올라가 있는 같은 주제의 페이지입니다.',
     min:'<b>최소 적용</b> — 본문은 손대지 않고 <b>저자 · 자격 · 게시일 · 참고문헌</b>만 얹은 상태. 미국 본사 페이지가 이미 쓰고 있는 형식이라 새로 정할 것이 없습니다.',
     full:'<b>전체 적용</b> — 감수 표기 · 편집 판단(응급 구분) · 수의사 코멘트를 더하고, <b>시각 요소는 자리만</b> 잡아둔 단계입니다.',
-    geo:'<b>SEO+GEO 버전</b> — 최종본과 동일합니다. 자리로 두었던 <b>헤더 · 사진 · 다이어그램 · 영상 · 제품 연결</b>이 실제로 채워집니다.'
+    geo:'<b>SEO+GEO 강화 버전</b> — 최종본과 동일합니다. 자리로 두었던 <b>헤더 · 사진 · 다이어그램 · 영상 · 제품 연결</b>이 실제로 채워집니다.'
   };
   function setMode(m){
     body.setAttribute('data-mode',m); note.innerHTML=TEXT[m];
