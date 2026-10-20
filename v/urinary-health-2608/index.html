@@ -485,6 +485,19 @@
   .origview img{display:block;width:100%;height:auto;border:1px solid #E2DCD6;border-radius:8px;
     box-shadow:0 6px 24px rgba(20,16,13,.10)}
 
+
+  .origgap{border:2px solid #C4132A;border-radius:14px;padding:26px 28px;margin:0 0 26px;background:#FFF7F8}
+  .origgap h2{margin:0 0 14px;font-size:21px;color:#C4132A;letter-spacing:-.02em}
+  .origgap ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+  .origgap li{position:relative;padding-left:26px;font-size:15.5px;line-height:1.6;color:#14100D}
+  .origgap li:before{content:"\00d7";position:absolute;left:4px;top:-1px;color:#C4132A;font-size:19px;font-weight:700}
+  .origgap li b{font-weight:700}
+  .origquote{margin:18px 0 0;padding:14px 16px;background:#fff;border-left:4px solid #C4132A;
+    border-radius:0 8px 8px 0;font-size:14px;color:#66676B;line-height:1.7}
+  .origquote span{display:block;margin-top:6px;font-size:16px;color:#14100D;font-weight:700}
+  .origfoot{margin:14px 0 0;font-size:13.5px;color:#66676B;line-height:1.7}
+  .origfoot code{background:#F1F2F4;padding:2px 7px;border-radius:5px;font-size:13px}
+  body[data-mode="orig"] .mode-strip p{font-size:15px}
   /* 변경사항 보기 표시 */
   [data-diff]{position:relative}
   body.show-diff [data-diff]{outline:2px solid #B4530F;outline-offset:6px;border-radius:6px}
@@ -509,8 +522,6 @@
     <span class="spacer"></span>
     <div class="seg" role="tablist" aria-label="적용 범위">
       <button role="tab" id="tabOrig" aria-selected="false" data-mode="orig">원본</button>
-      <button role="tab" id="tabMin"  aria-selected="false"  data-mode="min">최소 적용</button>
-      <button role="tab" id="tabFull" aria-selected="false" data-mode="full">전체 적용</button>
       <button role="tab" id="tabGeo"  aria-selected="true" data-mode="geo">SEO+GEO 버전</button>
     </div>
     <button class="ghost" id="diffBtn" type="button" aria-pressed="false">변경사항 보기</button>
@@ -520,6 +531,19 @@
 
 <section class="origview">
   <div class="origin">
+    <div class="origgap">
+      <h2>원본에 없는 것</h2>
+      <ul>
+        <li><b>저자의 실명과 자격</b> — 「직원 저자」로만 표기돼 있습니다</li>
+        <li><b>감수자와 감수일</b></li>
+        <li><b>본문 주장에 연결된 참고문헌</b></li>
+        <li><b>구조화 데이터의 저자 · 발행처</b> — 코드 안에서 둘 다 빈 문자열입니다</li>
+      </ul>
+      <p class="origquote">원문의 저자 소개는 이렇게 적혀 있습니다 —<br>
+        <span>&ldquo;저희 직원 중 한 명이 여러분을 위해 이 기사를 준비했습니다.&rdquo;</span></p>
+      <p class="origfoot">게시일은 <code>구월 01, 2015</code> 로 들어가 있어 기계가 날짜로 읽지 못합니다.
+        최종 수정일은 2026년 1월 13일입니다.</p>
+    </div>
     <p class="origcap"><b>힐스펫 코리아 현재 페이지</b> — 2026년 10월 20일 캡처
       <a href="https://www.hillspet.co.kr/cat-care/healthcare/flutd" target="_blank" rel="noopener">원문 열기 ↗</a></p>
     <img src="hills-original.jpg" alt="힐스펫 코리아 FLUTD 페이지 현재 상태 전체 화면">
@@ -1007,9 +1031,9 @@
 <script>
 (function(){
   var body=document.body, note=document.getElementById('modeNote');
-  var tabs=[document.getElementById('tabOrig'),document.getElementById('tabMin'),document.getElementById('tabFull'),document.getElementById('tabGeo')];
+  var tabs=[document.getElementById('tabOrig'),document.getElementById('tabGeo')];
   var TEXT={
-    orig:'<b>원본</b> — 힐스펫 코리아에 현재 올라가 있는 같은 주제의 페이지입니다. 저자 · 감수 · 참고문헌 표기가 없고, 구조화 데이터의 저자 · 발행처가 비어 있습니다.',
+    orig:'<b>원본</b> — 힐스펫 코리아에 현재 올라가 있는 같은 주제의 페이지입니다.',
     min:'<b>최소 적용</b> — 본문은 손대지 않고 <b>저자 · 자격 · 게시일 · 참고문헌</b>만 얹은 상태. 미국 본사 페이지가 이미 쓰고 있는 형식이라 새로 정할 것이 없습니다.',
     full:'<b>전체 적용</b> — 감수 표기 · 편집 판단(응급 구분) · 수의사 코멘트를 더하고, <b>시각 요소는 자리만</b> 잡아둔 단계입니다.',
     geo:'<b>SEO+GEO 버전</b> — 최종본과 동일합니다. 자리로 두었던 <b>헤더 · 사진 · 다이어그램 · 영상 · 제품 연결</b>이 실제로 채워집니다.'
